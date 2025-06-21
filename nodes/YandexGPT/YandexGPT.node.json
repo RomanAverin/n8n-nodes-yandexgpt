@@ -1,0 +1,23 @@
+{
+	"node": "n8n-nodes-yandex-cloud-ml.YandexGPT",
+	"nodeVersion": "1.0",
+	"codex": {
+		"categories": ["AI"],
+		"subcategories": {
+			"AI": ["Language Models", "Conversational", "Text Generation"]
+		},
+		"resources": {
+			"primaryDocumentation": [
+				{
+					"url": "https://yandex.cloud/en/docs/foundation-models/"
+				}
+			],
+			"credentialDocumentation": [
+				{
+					"url": "https://yandex.cloud/en/docs/iam/operations/iam-token/create-for-sa"
+				}
+			]
+		},
+		"alias": ["YandexGPT", "Yandex GPT", "YaGPT"]
+	}
+}

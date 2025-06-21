@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60">
+  <defs>
+    <linearGradient id="yandexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF0000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CC0000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="30" cy="30" r="28" fill="url(#yandexGrad)" stroke="#B30000" stroke-width="2"/>
+
+  <!-- Y letter -->
+  <path d="M15 15 L22 15 L26 22 L30 15 L37 15 L30 26 L30 35 L26 35 L26 26 Z" fill="white" stroke="white" stroke-width="0.5"/>
+
+  <!-- AI/GPT indicator dots -->
+  <circle cx="42" cy="18" r="2" fill="white" opacity="0.8"/>
+  <circle cx="47" cy="22" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="45" cy="28" r="1" fill="white" opacity="0.4"/>
+
+  <!-- Text indicator -->
+  <rect x="12" y="42" width="20" height="2" rx="1" fill="white" opacity="0.7"/>
+  <rect x="12" y="46" width="16" height="2" rx="1" fill="white" opacity="0.5"/>
+  <rect x="12" y="50" width="12" height="2" rx="1" fill="white" opacity="0.3"/>
+</svg>
