@@ -3,6 +3,7 @@ import {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeDescription,
+	NodeConnectionType,
 	NodeOperationError,
 } from 'n8n-workflow';
 
@@ -53,8 +54,8 @@ export class YandexGPT implements INodeType {
 		defaults: {
 			name: 'YandexGPT',
 		},
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: [NodeConnectionType.Main],
+		outputs: [NodeConnectionType.Main],
 		credentials: [
 			{
 				name: 'yandexGPTApi',
@@ -270,7 +271,6 @@ export class YandexGPT implements INodeType {
 		for (let i = 0; i < items.length; i++) {
 			try {
 				const resource = this.getNodeParameter('resource', i) as string;
-				const operation = this.getNodeParameter('operation', i) as string;
 				const model = this.getNodeParameter('model', i) as string;
 				const temperature = this.getNodeParameter('temperature', i) as number;
 				const maxTokens = this.getNodeParameter('maxTokens', i) as number;
@@ -362,7 +362,7 @@ export class YandexGPT implements INodeType {
 				if (this.continueOnFail()) {
 					returnData.push({
 						json: {
-							error: error.message,
+							error: error instanceof Error ? error.message : String(error),
 						},
 						pairedItem: {
 							item: i,

@@ -43,7 +43,7 @@ export function createJwtToken(serviceAccountKey: YandexServiceAccountKey): stri
 	} catch (error) {
 		throw new NodeOperationError(
 			null as any,
-			`Failed to create JWT token: ${error.message}`,
+			`Failed to create JWT token: ${error instanceof Error ? error.message : String(error)}`,
 		);
 	}
 }
@@ -53,7 +53,7 @@ export function createJwtToken(serviceAccountKey: YandexServiceAccountKey): stri
  */
 export async function exchangeJwtForIam(
 	jwtToken: string,
-	httpRequest: Function,
+	httpRequest: (options: any) => Promise<any>,
 ): Promise<string> {
 	try {
 		const response = await httpRequest({
@@ -76,7 +76,9 @@ export async function exchangeJwtForIam(
 	} catch (error) {
 		throw new NodeOperationError(
 			null as any,
-			`Failed to exchange JWT for IAM token: ${error.message}`,
+			`Failed to exchange JWT for IAM token: ${
+				error instanceof Error ? error.message : String(error)
+			}`,
 		);
 	}
 }
@@ -86,7 +88,7 @@ export async function exchangeJwtForIam(
  */
 export async function exchangeOAuthForIam(
 	oauthToken: string,
-	httpRequest: Function,
+	httpRequest: (options: any) => Promise<any>,
 ): Promise<string> {
 	try {
 		const response = await httpRequest({
@@ -109,7 +111,9 @@ export async function exchangeOAuthForIam(
 	} catch (error) {
 		throw new NodeOperationError(
 			null as any,
-			`Failed to exchange OAuth for IAM token: ${error.message}`,
+			`Failed to exchange OAuth for IAM token: ${
+				error instanceof Error ? error.message : String(error)
+			}`,
 		);
 	}
 }
@@ -143,10 +147,7 @@ export async function getCachedIamToken(
  */
 export function validateServiceAccountKey(key: any): YandexServiceAccountKey {
 	if (!key || typeof key !== 'object') {
-		throw new NodeOperationError(
-			null as any,
-			'Service account key must be a valid JSON object',
-		);
+		throw new NodeOperationError(null as any, 'Service account key must be a valid JSON object');
 	}
 
 	const requiredFields = ['id', 'service_account_id', 'private_key'];
@@ -160,11 +161,11 @@ export function validateServiceAccountKey(key: any): YandexServiceAccountKey {
 	}
 
 	// Validate private key format
-	if (!key.private_key.includes('BEGIN PRIVATE KEY') || !key.private_key.includes('END PRIVATE KEY')) {
-		throw new NodeOperationError(
-			null as any,
-			'Invalid private key format in service account key',
-		);
+	if (
+		!key.private_key.includes('BEGIN PRIVATE KEY') ||
+		!key.private_key.includes('END PRIVATE KEY')
+	) {
+		throw new NodeOperationError(null as any, 'Invalid private key format in service account key');
 	}
 
 	return key as YandexServiceAccountKey;
@@ -177,14 +178,17 @@ export function createCacheKey(credentials: any): string {
 	const authType = credentials.authType;
 
 	switch (authType) {
-		case 'serviceAccountKey':
+		case 'serviceAccountKey': {
 			const key = JSON.parse(credentials.serviceAccountKey);
 			return `sa_${key.service_account_id}`;
-		case 'oauthToken':
+		}
+		case 'oauthToken': {
 			// Use first 8 characters of token for cache key
 			return `oauth_${credentials.oauthToken.substring(0, 8)}`;
-		default:
+		}
+		default: {
 			return `unknown_${Date.now()}`;
+		}
 	}
 }
 
@@ -210,20 +214,25 @@ export function clearTokenCache(): void {
 /**
  * Gets the main IAM token using the appropriate method based on auth type
  */
-export async function getIamToken(credentials: any, httpRequest: Function): Promise<string> {
+export async function getIamToken(
+	credentials: any,
+	httpRequest: (options: any) => Promise<any>,
+): Promise<string> {
 	const authType = credentials.authType as string;
 
 	switch (authType) {
-		case 'iamToken':
+		case 'iamToken': {
 			return credentials.iamToken as string;
+		}
 
-		case 'oauthToken':
+		case 'oauthToken': {
 			const cacheKeyOAuth = createCacheKey(credentials);
 			return getCachedIamToken(cacheKeyOAuth, () =>
 				exchangeOAuthForIam(credentials.oauthToken as string, httpRequest),
 			);
+		}
 
-		case 'serviceAccountKey':
+		case 'serviceAccountKey': {
 			const serviceAccountKey = validateServiceAccountKey(
 				JSON.parse(credentials.serviceAccountKey as string),
 			);
@@ -233,11 +242,10 @@ export async function getIamToken(credentials: any, httpRequest: Function): Prom
 				const jwtToken = createJwtToken(serviceAccountKey);
 				return exchangeJwtForIam(jwtToken, httpRequest);
 			});
+		}
 
-		default:
-			throw new NodeOperationError(
-				null as any,
-				`Unsupported authentication type: ${authType}`,
-			);
+		default: {
+			throw new NodeOperationError(null as any, `Unsupported authentication type: ${authType}`);
+		}
 	}
 }
