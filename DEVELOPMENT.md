@@ -14,8 +14,8 @@ This guide will help you set up the development environment for the YandexGPT n8
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/n8n-nodes-yandex-cloud-ml.git
-cd n8n-nodes-yandex-cloud-ml
+git clone https://github.com/RomanAverin/n8n-nodes-yandexgpt.git
+cd n8n-nodes-yandexgpt
 ```
 
 ### 2. Install Dependencies
@@ -41,7 +41,7 @@ npm link
 In your n8n installation directory:
 
 ```bash
-npm link n8n-nodes-yandex-cloud-ml
+npm link n8n-nodes-yandexgpt
 ```
 
 Or if using n8n via npx:
@@ -52,7 +52,7 @@ mkdir n8n-dev
 cd n8n-dev
 npm init -y
 npm install n8n
-npm link n8n-nodes-yandex-cloud-ml
+npm link n8n-nodes-yandexgpt
 npx n8n start
 ```
 
@@ -61,7 +61,7 @@ npx n8n start
 ### Project Structure
 
 ```
-n8n-nodes-yandex-cloud-ml/
+n8n-nodes-yandexgpt/
 ├── .github/                 # GitHub Actions workflows
 ├── credentials/             # Credential files
 │   └── YandexGPTApi.credentials.ts
@@ -119,20 +119,26 @@ npx tsc --noEmit
 ### Node Files
 
 #### `YandexGPT.node.ts`
+
 Main node implementation containing:
+
 - Node description and properties
 - Execute method with API calls
 - Parameter validation
 - Error handling
 
 #### `YandexGPT.node.json`
+
 Node metadata for n8n registry:
+
 - Categories and subcategories
 - Documentation links
 - Aliases
 
 #### `YandexGPTApi.credentials.ts`
+
 Credential definition:
+
 - Authentication methods
 - Parameter definitions
 - Validation rules
@@ -140,7 +146,9 @@ Credential definition:
 ### Utility Files
 
 #### `utils/auth.ts`
+
 Authentication utilities:
+
 - JWT token creation
 - IAM token exchange
 - Token caching
@@ -151,6 +159,7 @@ Authentication utilities:
 ### 1. Adding New Operations
 
 1. Update node properties in `YandexGPT.node.ts`:
+
    ```typescript
    options: [
      // ... existing operations
@@ -205,6 +214,7 @@ Authentication utilities:
 ### Test Cases
 
 #### Basic Chat Completion
+
 ```json
 {
   "resource": "chat",
@@ -222,6 +232,7 @@ Authentication utilities:
 ```
 
 #### Error Handling
+
 - Invalid credentials
 - Rate limiting
 - Network errors
@@ -242,17 +253,20 @@ npx n8n start
 ### Common Issues
 
 #### "Node not found"
+
 - Ensure the node is properly built: `npm run build`
-- Check if it's linked: `npm list -g n8n-nodes-yandex-cloud-ml`
+- Check if it's linked: `npm list -g n8n-nodes-yandexgpt`
 - Restart n8n after linking
 
 #### "Authentication failed"
+
 - Verify service account key format
 - Check folder ID
 - Ensure service account has proper roles
 - Check IAM token expiration
 
 #### "TypeScript errors"
+
 - Run `npx tsc --noEmit` to check types
 - Ensure all dependencies are installed
 - Check TypeScript version compatibility
@@ -326,6 +340,7 @@ git push origin feature/new-feature
 ### Commit Messages
 
 Follow conventional commits:
+
 - `feat:` for new features
 - `fix:` for bug fixes
 - `docs:` for documentation
@@ -336,14 +351,17 @@ Follow conventional commits:
 ## Resources
 
 ### n8n Development
+
 - [n8n Node Development](https://docs.n8n.io/integrations/creating-nodes/)
 - [n8n Community Nodes](https://docs.n8n.io/integrations/community-nodes/)
 
 ### YandexGPT API
+
 - [YandexGPT Documentation](https://yandex.cloud/en/docs/foundation-models/)
 - [Yandex Cloud IAM](https://yandex.cloud/en/docs/iam/)
 
 ### TypeScript
+
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - [TypeScript with Node.js](https://nodejs.org/en/docs/guides/nodejs-typescript/)
 

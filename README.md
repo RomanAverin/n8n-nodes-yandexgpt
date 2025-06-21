@@ -1,4 +1,4 @@
-# n8n-nodes-yandex-cloud-ml
+# n8n-nodes-yandexgpt
 
 An n8n community node to interact with Yandex Cloud Machine Learning services, specifically YandexGPT.
 
@@ -22,13 +22,13 @@ An n8n community node to interact with Yandex Cloud Machine Learning services, s
 
 1. Go to **Settings > Community Nodes** in your n8n instance
 2. Select **Install a community node**
-3. Enter `n8n-nodes-yandex-cloud-ml`
+3. Enter `n8n-nodes-yandexgpt`
 4. Click **Install**
 
 ### Manual Installation
 
 1. Navigate to your n8n installation directory
-2. Run: `npm install n8n-nodes-yandex-cloud-ml`
+2. Run: `npm install n8n-nodes-yandexgpt`
 3. Restart n8n
 
 ### Docker
@@ -45,8 +45,9 @@ docker run -it --rm \
 ```
 
 Then install the package inside the container:
+
 ```bash
-npm install n8n-nodes-yandex-cloud-ml
+npm install n8n-nodes-yandexgpt
 ```
 
 ## Authentication
@@ -61,6 +62,7 @@ This node supports three authentication methods:
 4. In n8n credentials, paste the entire JSON content
 
 **Example Service Account Key:**
+
 ```json
 {
   "id": "aje6o61dvog2h6g9a33s",
@@ -94,6 +96,7 @@ This node supports three authentication methods:
 Generate conversational responses using YandexGPT.
 
 **Parameters:**
+
 - **Model**: Choose from available models
   - `yandexgpt-lite`: Faster, more economical
   - `yandexgpt`: Better quality, more capable
@@ -107,6 +110,7 @@ Generate conversational responses using YandexGPT.
 Generate text completions from prompts.
 
 **Parameters:**
+
 - **Model**: Same model options as chat
 - **Prompt**: Input text to complete
 - **Temperature**: Controls randomness
@@ -127,7 +131,7 @@ Generate text completions from prompts.
       "text": "You are a helpful assistant."
     },
     {
-      "role": "user", 
+      "role": "user",
       "text": "What is the capital of Russia?"
     }
   ],
@@ -141,7 +145,7 @@ Generate text completions from prompts.
 ```json
 {
   "resource": "text",
-  "operation": "generate", 
+  "operation": "generate",
   "model": "yandexgpt",
   "prompt": "Write a short story about artificial intelligence:",
   "temperature": 0.8,
@@ -185,6 +189,7 @@ Enable "Continue on Fail" to handle errors gracefully in workflows.
 ## Rate Limits
 
 YandexGPT API has rate limits:
+
 - **Requests per minute**: Varies by model and account type
 - **Tokens per minute**: Varies by model and account type
 
@@ -194,15 +199,16 @@ The node will automatically handle rate limit responses and retry when appropria
 
 ### Available Models
 
-| Model | Description | Use Case |
-|-------|-------------|----------|
-| `yandexgpt-lite` | Fast, economical | Simple tasks, high volume |
-| `yandexgpt` | Balanced quality/speed | General purpose |
-| `yandexgpt/rc` | Latest, most capable | Complex tasks, best quality |
+| Model            | Description            | Use Case                    |
+| ---------------- | ---------------------- | --------------------------- |
+| `yandexgpt-lite` | Fast, economical       | Simple tasks, high volume   |
+| `yandexgpt`      | Balanced quality/speed | General purpose             |
+| `yandexgpt/rc`   | Latest, most capable   | Complex tasks, best quality |
 
 ### Model Selection
 
 Choose based on your needs:
+
 - **Speed**: Use `yandexgpt-lite`
 - **Quality**: Use `yandexgpt` or `yandexgpt/rc`
 - **Cost**: Use `yandexgpt-lite`
@@ -212,6 +218,7 @@ Choose based on your needs:
 ### Custom API Endpoint
 
 You can specify a custom API endpoint in credentials if needed:
+
 ```
 https://your-custom-endpoint.yandex.net
 ```
@@ -233,16 +240,19 @@ https://your-custom-endpoint.yandex.net
 ### Common Issues
 
 1. **"Invalid credentials"**
+
    - Check your service account key format
    - Ensure the service account has proper roles
    - Verify folder ID is correct
 
 2. **"Model not found"**
+
    - Check if the model is available in your folder
    - Verify folder ID permissions
    - Try a different model
 
 3. **"Rate limit exceeded"**
+
    - Wait before retrying
    - Consider using a different model
    - Check your account limits
@@ -255,6 +265,7 @@ https://your-custom-endpoint.yandex.net
 ### Debug Mode
 
 Enable debug mode by setting:
+
 ```bash
 N8N_LOG_LEVEL=debug
 ```
@@ -266,22 +277,26 @@ This will show detailed request/response information.
 ### Setup
 
 1. Clone the repository:
+
 ```bash
-git clone https://github.com/your-username/n8n-nodes-yandex-cloud-ml.git
-cd n8n-nodes-yandex-cloud-ml
+git clone https://github.com/RomanAverin/n8n-nodes-yandexgpt.git
+cd n8n-nodes-yandexgpt
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Build the project:
+
 ```bash
 npm run build
 ```
 
 4. Link for local development:
+
 ```bash
 npm link
 ```
@@ -324,6 +339,7 @@ npm run build
 ## Changelog
 
 ### v1.0.0
+
 - Initial release
 - Support for YandexGPT chat and text completion
 - Multiple authentication methods
@@ -335,8 +351,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/your-username/n8n-nodes-yandex-cloud-ml/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-username/n8n-nodes-yandex-cloud-ml/discussions)
+- **Issues**: [GitHub Issues](https://github.com/your-username/n8n-nodes-yandexgpt/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/your-username/n8n-nodes-yandexgpt/discussions)
 - **Documentation**: [Yandex Cloud Docs](https://yandex.cloud/en/docs/foundation-models/)
 
 ## Acknowledgments

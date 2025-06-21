@@ -15,7 +15,7 @@ Get up and running with the YandexGPT n8n node in 5 minutes.
 1. Open your n8n instance
 2. Go to **Settings** → **Community Nodes**
 3. Click **Install a community node**
-4. Enter: `n8n-nodes-yandex-cloud-ml`
+4. Enter: `n8n-nodes-yandexgpt`
 5. Click **Install**
 6. Restart n8n if required
 
@@ -26,7 +26,7 @@ Get up and running with the YandexGPT n8n node in 5 minutes.
 cd ~/.n8n
 
 # Install the package
-npm install n8n-nodes-yandex-cloud-ml
+npm install n8n-nodes-yandexgpt
 
 # Restart n8n
 n8n start
@@ -36,7 +36,7 @@ n8n start
 
 ```dockerfile
 # Add to your Dockerfile
-RUN npm install n8n-nodes-yandex-cloud-ml
+RUN npm install n8n-nodes-yandexgpt
 ```
 
 Or mount as volume:
@@ -301,7 +301,7 @@ n8n start
 
 - Check the [full documentation](README.md)
 - Review [examples](EXAMPLES.md)
-- Create an issue on [GitHub](https://github.com/your-username/n8n-nodes-yandex-cloud-ml/issues)
+- Create an issue on [GitHub](https://github.com/your-username/n8n-nodes-yandexgpt/issues)
 
 ## Next Steps
 

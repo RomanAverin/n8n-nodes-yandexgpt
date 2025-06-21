@@ -38,7 +38,7 @@ This file contains practical examples of using the YandexGPT node in n8n workflo
         "temperature": 0.3,
         "maxTokens": 500
       },
-      "type": "n8n-nodes-yandex-cloud-ml.yandexGPT",
+      "type": "n8n-nodes-yandexgpt.yandexGPT",
       "typeVersion": 1,
       "position": [860, 240],
       "id": "basic-chat",
@@ -141,7 +141,7 @@ This file contains practical examples of using the YandexGPT node in n8n workflo
         "temperature": 0.4,
         "maxTokens": 600
       },
-      "type": "n8n-nodes-yandex-cloud-ml.yandexGPT",
+      "type": "n8n-nodes-yandexgpt.yandexGPT",
       "name": "Customer Support Chat"
     }
   ]
@@ -171,7 +171,7 @@ This file contains practical examples of using the YandexGPT node in n8n workflo
         "temperature": 0.3,
         "maxTokens": 400
       },
-      "type": "n8n-nodes-yandex-cloud-ml.yandexGPT",
+      "type": "n8n-nodes-yandexgpt.yandexGPT",
       "name": "Summarize Article"
     }
   ]
@@ -315,7 +315,7 @@ This file contains practical examples of using the YandexGPT node in n8n workflo
         "temperature": 0.4,
         "maxTokens": 800
       },
-      "type": "n8n-nodes-yandex-cloud-ml.yandexGPT",
+      "type": "n8n-nodes-yandexgpt.yandexGPT",
       "name": "Generate Email Response"
     }
   ]
@@ -338,7 +338,7 @@ This file contains practical examples of using the YandexGPT node in n8n workflo
         "temperature": 0.6,
         "maxTokens": 400
       },
-      "type": "n8n-nodes-yandex-cloud-ml.yandexGPT",
+      "type": "n8n-nodes-yandexgpt.yandexGPT",
       "name": "Generate Product Description"
     }
   ]
@@ -395,7 +395,7 @@ This file contains practical examples of using the YandexGPT node in n8n workflo
         "temperature": 0.3,
         "maxTokens": 1000
       },
-      "type": "n8n-nodes-yandex-cloud-ml.yandexGPT",
+      "type": "n8n-nodes-yandexgpt.yandexGPT",
       "name": "Analyze Sales Data"
     }
   ]
@@ -452,7 +452,7 @@ This file contains practical examples of using the YandexGPT node in n8n workflo
         "maxTokens": 1000,
         "continueOnFail": true
       },
-      "type": "n8n-nodes-yandex-cloud-ml.yandexGPT",
+      "type": "n8n-nodes-yandexgpt.yandexGPT",
       "name": "YandexGPT with Error Handling"
     },
     {
@@ -513,7 +513,7 @@ This file contains practical examples of using the YandexGPT node in n8n workflo
         "maxTokens": 1000,
         "continueOnFail": true
       },
-      "type": "n8n-nodes-yandex-cloud-ml.yandexGPT",
+      "type": "n8n-nodes-yandexgpt.yandexGPT",
       "name": "YandexGPT Request"
     },
     {
@@ -611,7 +611,7 @@ This file contains practical examples of using the YandexGPT node in n8n workflo
         "temperature": 0.4,
         "maxTokens": 500
       },
-      "type": "n8n-nodes-yandex-cloud-ml.yandexGPT",
+      "type": "n8n-nodes-yandexgpt.yandexGPT",
       "name": "Generate Response"
     },
     {
